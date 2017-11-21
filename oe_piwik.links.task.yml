@@ -1,0 +1,15 @@
+oe_piwik.settings:
+  title: 'General settings'
+  route_name: oe_piwik.settings
+  base_route: oe_piwik.settings
+oe_piwik.rules_controller:
+  deriver: 'Drupal\oe_piwik\Plugin\Derivative\PiwikDynamicTabsRules'
+entity.oe_piwik_rule.page_edit:
+  route_name: entity.oe_piwik_rule.edit_form
+  base_route: entity.oe_piwik_rule.canonical
+  title: Edit
+entity.oe_piwik_rule.delete_confirm:
+  route_name:  entity.oe_piwik_rule.delete_form
+  base_route:  entity.oe_piwik_rule.canonical
+  title: Delete
+  weight: 10
