@@ -1,0 +1,7 @@
+oe_piwik:
+  version: VERSION
+  js:
+    js/oe_piwik.admin.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

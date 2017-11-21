@@ -1,0 +1,12 @@
+oe_piwik_site_id: ''
+oe_piwik_smartloader_prurl: '//europa.eu/webtools/load.js'
+oe_piwik_site_instance: 'ec.europa.eu'
+oe_piwik_utility: 'piwik'
+oe_piwik_site_path: ''
+oe_piwik_site_section: ''
+oe_piwik_site_search: 1
+oe_piwik_visibility_pages: 0
+oe_piwik_pages: "/admin\n/admin/*\n/batch\n/node/add*\n/node/*/*\n/user/*/*"
+oe_piwik_visibility_roles: 1
+oe_piwik_roles: {  }
+oe_piwik_rules_state: 0

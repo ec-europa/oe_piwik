@@ -1,0 +1,5 @@
+oe_piwik_rule_entity_collection_menu:
+  title: 'OE Piwik'
+  parent: system.admin_config_system
+  description: 'Configure the settings used to generate your OE Piwik tracking code.'
+  route_name: oe_piwik.settings

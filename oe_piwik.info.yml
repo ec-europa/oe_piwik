@@ -1,0 +1,7 @@
+name: OE Piwik Web Analytics
+type: module
+description: Adds Piwik Webtools widget to all your site's pages.
+package: OE
+# version: VERSION
+core: 8.x
+configure: oe_piwik.settings

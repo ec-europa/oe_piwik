@@ -1,0 +1,5 @@
+oe_piwik_rule_entity_action_add:
+  route_name: entity.oe_piwik_rule.add_form
+  title: 'Add piwik rule'
+  appears_on:
+    - entity.oe_piwik_rule.collection

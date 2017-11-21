@@ -1,0 +1,3 @@
+administer piwik settings:
+  title: 'Administer OE Piwik Settings'
+  description: 'Perform maintenance tasks for Piwik.'

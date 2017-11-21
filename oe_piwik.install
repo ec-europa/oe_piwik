@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @file
+ * Installation file for EO Piwik module.
+ */
+
+use Drupal\Core\Url;
+use Drupal\user\Entity\Role;
+
+/**
+ * Implements hook_install().
+ */
+function oe_piwik_install() {
+  // Create and save PIWIK administrator role.
+  $rid = 'piwik_administrator';
+  $role = Role::load($rid);
+  if (empty($role)) {
+    $data = ['id' => $rid, 'label' => 'PIWIK administrator'];
+    $role = Role::create($data);
+    $role->save();
+  }
+  // Define permissions for role.
+  $piwik_admin_permissions = [
+    'administer piwik settings' => TRUE,
+  ];
+  user_role_grant_permissions($role->id(), $piwik_admin_permissions);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function oe_piwik_uninstall() {
+  $role = Role::load('piwik_administrator');
+  if (!empty($role)) {
+    $role->delete();
+  }
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function oe_piwik_requirements($phase) {
+  $requirements = [];
+
+  if ($phase == 'runtime') {
+    $config = \Drupal::config('oe_piwik.settings');
+
+    // Raise warning if Piwik user account has not been set yet.
+    if (!preg_match('/^\d{1,}$/', $config->get('oe_piwik_site_id'))) {
+      $requirements['oe_piwik'] = [
+        'title' => t('OE Piwik module'),
+        'description' => t('OE Piwik module has not been configured yet. Please configure its settings from the <a href=":url">OE Piwik settings page</a>.', [':url' => Url::fromRoute('oe_piwik.settings')->toString()]),
+        'severity' => REQUIREMENT_WARNING,
+        'value' => t('Not configured'),
+      ];
+    }
+  }
+
+  return $requirements;
+}
