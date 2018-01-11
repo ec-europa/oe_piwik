@@ -46,6 +46,26 @@
           return vals.join(', ');
         }
       });
+      $('#edit-search').drupalSetSummary(function (context) {
+        var vals = [];
+        if ($('input#edit-oe-piwik-site-search', context).is(':checked')) {
+          vals.push(Drupal.t('Site search'));
+        }
+        if (!vals.length) {
+          return Drupal.t('Not tracked');
+        }
+        return Drupal.t('@items enabled', {'@items': vals.join(', ')});
+      });
+      $('#edit-advanced-rules').drupalSetSummary(function (context) {
+        var vals = [];
+        if ($('input#edit-oe-piwik-rules-state', context).is(':checked')) {
+          vals.push(Drupal.t('Piwik rules'));
+        }
+        if (!vals.length) {
+          return Drupal.t('Not rules');
+        }
+        return Drupal.t('@items enabled', {'@items': vals.join(', ')});
+      });
     }
   };
 })(jQuery);
