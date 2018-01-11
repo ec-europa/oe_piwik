@@ -272,6 +272,7 @@ class OEPiwikConfigForm extends ConfigFormBase {
     // code snippets.
     if ($form_state->getValue('oe_piwik_visibility_pages') != 2) {
       $pages = preg_split('/(\r\n?|\n)/', $form_state->getValue('oe_piwik_pages'));
+      $pages = array_filter($pages);
       foreach ($pages as $page) {
         if (strpos($page, '/') !== 0 && $page !== '<front>') {
           $form_state->setErrorByName('oe_piwik_pages', t('Path "@page" not prefixed with slash.', ['@page' => $page]));
