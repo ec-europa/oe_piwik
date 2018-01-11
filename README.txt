@@ -14,7 +14,7 @@ Usage
 Once the module is enabled in a site the general configuration must be defined
 before starting the Piwik integration.
 
-Navigate to `admin/config/system/webtools/piwik` in order to
+Navigate to `admin/config/system/piwik` in order to
 enter the Piwik website ID and define other properties like what user
 roles should be tracked.
 
@@ -39,7 +39,7 @@ by default.
 
 #### How to enable Advanced PIWIK rules <a name="how-to-enable"></a>
 The feature can be enabled on the PIWIK configuration page which is available
-on the following path: `admin/config/system/webtools/piwik`.
+on the following path: `admin/config/system/piwik`.
 
 On the configuration page click on the "Advanced PIWIK rules" tab which
 is located at the bottom of the page.
@@ -75,7 +75,7 @@ If there are no rules for a given path the default settings from the
 
 #### How to add a new custom PIWIK rule <a name="how-to-add-rule"></a>
 To add the custom rule click on the "Advanced PIWIK rules" tab or go to 
-the following path: `admin/config/system/webtools/piwik/advanced_rules`.
+the following path: `admin/config/system/piwik/advanced_rules`.
 
 Next click on the **"+ Add piwik rule"** link and fill the form by following
 the description tips located beneath the fields.
