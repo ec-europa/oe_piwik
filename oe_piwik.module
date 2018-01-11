@@ -130,7 +130,7 @@ function oe_piwik_page_bottom(array &$page_bottom) {
   // Advanced PIWIK rules integration point.
   if ($variables->get('oe_piwik_rules_state')) {
     if ($piwik_rule = _oe_piwik_get_piwik_rule()) {
-      $webtools_piwik_settings['siteSection'] = $piwik_rule->rule_section;
+      $webtools_piwik_settings['siteSection'] = $piwik_rule->get('rule_section')->value;
     }
   }
 
@@ -253,22 +253,23 @@ function oe_piwik_search_get_keys() {
 function _oe_piwik_get_piwik_rule() {
   // Get the current path and convert to lowercase.
   $path = Unicode::strtolower(\Drupal::service('path.current')->getPath());
+  $path_alias = Unicode::strtolower(\Drupal::service('path.alias_manager')->getAliasByPath($path));
 
   // Get the current language.
   $lang_code = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
   // Overwrite path value for the front page.
   if (\Drupal::service('path.matcher')->isFrontPage()) {
-    $path = '<front>';
+    $path_alias = '<front>';
   }
 
   // Get the advanced PIWIK rule based on the direct path.
-  if ($piwik_rule = _oe_piwik_get_direct_path_rule($path, $lang_code)) {
+  if ($piwik_rule = _oe_piwik_get_direct_path_rule($path_alias, $lang_code)) {
     return $piwik_rule;
   }
 
   // Get the advanced PIWIK rule based on the regular expression rule.
-  if ($piwik_rule = _oe_piwik_get_regexp_path_rule($path, $lang_code)) {
+  if ($piwik_rule = _oe_piwik_get_regexp_path_rule($path_alias, $lang_code)) {
     return $piwik_rule;
   }
 
