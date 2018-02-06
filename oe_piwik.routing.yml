@@ -1,0 +1,41 @@
+#SETTINGS PAGE PIWIK
+oe_piwik.settings:
+  path: '/admin/config/system/webtools/piwik' 
+  defaults: 
+    _form: '\Drupal\oe_piwik\Form\OEPiwikConfigForm'
+    _title: 'OE Piwik'
+    link_id: 'oe_piwik.settings'
+  requirements: 
+    _permission: 'administer piwik settings'
+#LIST (Calls the list controller, defined in the annotation of the oe_piwik_rule entity.)
+entity.oe_piwik_rule.collection:
+  path: '/admin/config/system/webtools/piwik/advanced_rules'
+  defaults:
+    _entity_list: 'oe_piwik_rule'
+    _title: 'List of OE PIWIK rule'
+  requirements:
+    _permission: 'administer piwik settings'
+#ADD RULE (Calls the form.add controller, defined in the oe_piwik_rule entity.)
+entity.oe_piwik_rule.add_form:
+  path: '/admin/config/system/webtools/piwik/advanced_rules/add'
+  defaults:
+    _entity_form: oe_piwik_rule.add
+    _title: 'Add the OE PIWIK rule'
+  requirements:
+    _permission: 'administer piwik settings'
+#EDIT RULE (Calls the form.edit controller, defined in the oe_piwik_rule entity.)
+entity.oe_piwik_rule.edit_form:
+  path: '/admin/config/system/webtools/piwik/advanced_rules/{oe_piwik_rule}/edit'
+  defaults:
+    _entity_form: oe_piwik_rule.edit
+    _title: 'Edit the OE PIWIK rule'
+  requirements:
+    _permission: 'administer piwik settings'
+#DELETE RULE (Calls the form.delete controller, defined in the oe_piwik_rule entity.)
+entity.oe_piwik_rule.delete_form:
+  path: '/admin/config/system/webtools/piwik/advanced_rules/{oe_piwik_rule}/delete'
+  defaults:
+    _entity_form: oe_piwik_rule.delete
+    _title: 'Delete the OE PIWIK rule'
+  requirements:
+    _permission: 'administer piwik settings'
